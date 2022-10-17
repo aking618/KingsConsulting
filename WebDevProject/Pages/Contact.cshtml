@@ -1,0 +1,56 @@
+﻿@page
+@model WebDevProject.Pages.ContactModel
+@{
+}
+
+<div class="container">
+    <form method="post">
+        <div class="row row-cols-1 row-cols-md-2 g-3 align-items-center">
+            <div class="col col-md-12">
+                <div class="display-5">
+                    Questions? Get in touch
+                </div>
+            </div>
+            <div class="col col-md-6">
+                <label for="inputName" class="col-form-label">Your name</label>
+                <input type="text" id="inputName" class="form-control" aria-describedby="nameHelpInline">
+                <span id="nameHelpInline" class="form-text">
+                    Must be 8-20 characters long.
+                </span>
+            </div>
+            <div class="col col-md-6">
+                <label for="inputEmail" class="col-form-label">Your email</label>
+                <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+                <span id="nameHelpInline" class="form-text">
+                    Must be 8-20 characters long.
+                </span>
+            </div>
+            <div class="col col-md-6">
+                <label for="selectCategory" class="col-form-label">What you are interested in</label>
+                <select class="form-select" id="selectCategory" aria-label="Service selection">
+                    <option selected value="1">General Consulting</option>
+                    <option value="2">Web Development</option>
+                    <option value="3">Mobile Development</option>
+                </select>
+            </div>
+            <div class="col col-md-6">
+                <label for="selectBudget" class="col-form-label">Project budget</label>
+                <select class="form-select" id="selectBudget" aria-label="Budget selection">
+                    <option selected value="1">Less than $50</option>
+                    <option value="2">$50 - $100</option>
+                    <option value="3">$100 - $500</option>
+                    <option value="3">$500 - $1000</option>
+                    <option value="3">Other</option>
+                </select>
+            </div>
+            <div class="col col-md-12">
+                <label for="inputMessage" class="col-form-label">Message</label>
+                <textarea id="inputMessage" rows="3" class="form-control" aria-describedby="messageHelpInline"></textarea>
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-primary">SEND</button>
+            </div>
+        </div>
+    </form>
+</div>
+
