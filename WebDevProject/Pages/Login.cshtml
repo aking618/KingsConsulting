@@ -1,0 +1,36 @@
+﻿@page
+@model WebDevProject.Pages.LoginModel
+@{
+}
+
+<form method="post">
+    <div class="row row-cols-1 row-cols-md-2 g-3 align-items-center">
+        <div class="col col-md-12">
+            <div class="display-5">
+                Hello Again!
+            </div>
+        </div>
+        <div class="col col-md-12">
+            <p class="lead">
+                Login for a faster checkout process
+            </p>
+        </div>
+        <div class="col col-md-12">
+            <label for="inputEmail" class="col-form-label">Your email</label>
+            <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+        </div>
+        <div class="col col-md-12">
+            <label for="inputPassword" class="col-form-label">Your password</label>
+            <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline">
+            <span id="passwordHelpInline" class="form-text">
+                Must be 8-20 characters long.
+            </span>
+        </div>
+        <div class="col col-md-12">
+            <button class="btn btn-outline-primary">LOGIN</button>
+        </div>
+        <div class="col">
+            Don't have an account yet? <a href="/Login">Sign Up</a>
+        </div>
+    </div>
+</form>
