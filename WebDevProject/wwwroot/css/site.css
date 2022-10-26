@@ -97,3 +97,7 @@ body {
     color: var(--secondary-color);
     border-color: var(--secondary-color);
 }
+
+.link {
+    color: white;
+}
