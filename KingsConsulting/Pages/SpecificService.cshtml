@@ -3,7 +3,12 @@
 @{
 }
 
-<div class="row row-cols-1 row-cols-md-2 g-5 align-items-center mt-5">
+<div class="row row-cols-1 row-cols-md-2 align-items-center mt-5">
+    <div class="col col-md-12 mb-5">
+        <div class="display-5">
+            Category
+        </div>
+    </div>
     <div class="col">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -14,16 +19,16 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://via.placeholder.com/500" class="d-block rounded img-fluid mx-auto" alt="...">
+                    <img src="https://picsum.photos/500?random=1" class="d-block rounded img-fluid mx-auto" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/500" class="d-block rounded img-fluid mx-auto" alt="...">
+                    <img src="https://picsum.photos/500?random=2" class="d-block rounded img-fluid mx-auto" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/500" class="d-block rounded img-fluid mx-auto" alt="...">
+                    <img src="https://picsum.photos/500?random=3" class="d-block rounded img-fluid mx-auto" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/500" class="d-block rounded img-fluid mx-auto" alt="...">
+                    <img src="https://picsum.photos/500?random=4" class="d-block rounded img-fluid mx-auto" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -36,10 +41,46 @@
             </button>
         </div>
     </div>
-    <div class="col">
-        <div class="row p-3">
-        service
-        </div>
+    <div class="col p-3">
+        <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#x">X</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#y">Y</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#z">Z</a>
+                    </li>
+                    </ul>
+                </div>
+                <form class="card-body tab-content">
+                    <div class="tab-pane active" id="x">
+                        <div class="col text-dark">
+                            <p>$1234</p>
+                            <p>Description X</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sapien diam, lobortis vel mattis vitae, gravida in neque. Integer eu enim quam. Integer blandit libero ultrices tellus fringilla, et consequat lacus finibus. Aliquam erat volutpat. Nullam a dapibus lorem.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="y">
+                        <div class="col text-dark">
+                            <p>$1234</p>
+                            <p>Description Y</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sapien diam, lobortis vel mattis vitae, gravida in neque. Integer eu enim quam. Integer blandit libero ultrices tellus fringilla, et consequat lacus finibus. Aliquam erat volutpat. Nullam a dapibus lorem.</p>
+                        </div>
+                    </div>
+                <div class="tab-pane" id="z">
+                    <div class="col text-dark">
+                        <p>$1234</p>
+                        <p>Description Z</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sapien diam, lobortis vel mattis vitae, gravida in neque. Integer eu enim quam. Integer blandit libero ultrices tellus fringilla, et consequat lacus finibus. Aliquam erat volutpat. Nullam a dapibus lorem.</p>
+                    </div>
+                </div>
+                    <button class="btn btn-primary d-flex mx-auto" type="submit">PURCHASE</button>
+                </form>
+            </div>
     </div>
 </div>
 
