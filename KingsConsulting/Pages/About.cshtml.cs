@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebDevProject.Pages
+namespace KingsConsulting.Pages
 
 {
     public class AboutModel : PageModel
