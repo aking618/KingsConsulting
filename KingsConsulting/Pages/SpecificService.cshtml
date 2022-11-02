@@ -6,30 +6,25 @@
 <div class="row row-cols-1 row-cols-md-2 align-items-center mt-5">
     <div class="col col-md-12 mb-5">
         <div class="display-5">
-            Category
+            @Model.serviceDetails.Title
         </div>
     </div>
     <div class="col">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                @for (var i = 0; i < Model.serviceDetails.imageUrls!.Length; i++)
+                {
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "")" aria-label="Slide @(i + 1)"></button>
+                }
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://picsum.photos/500?random=1" class="d-block rounded img-fluid mx-auto" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://picsum.photos/500?random=2" class="d-block rounded img-fluid mx-auto" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://picsum.photos/500?random=3" class="d-block rounded img-fluid mx-auto" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://picsum.photos/500?random=4" class="d-block rounded img-fluid mx-auto" alt="...">
-                </div>
+                @for (var i = 0; i < Model.serviceDetails.imageUrls!.Length; i++)
+                {     
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img src="@Model.serviceDetails.imageUrls[i]" class="d-block rounded img-fluid mx-auto" alt="...">
+                    </div>
+
+                }
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
