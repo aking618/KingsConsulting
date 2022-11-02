@@ -40,39 +40,26 @@
         <div class="card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#x">X</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#y">Y</a>
-                        </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#z">Z</a>
-                    </li>
+                        @for (var i = 0; i < Model.serviceDetails.categories!.Length; i++)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "")" data-bs-toggle="tab" href="#tab@(i)">@Model.serviceDetails.categories[i].Title</a>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <form class="card-body tab-content">
-                    <div class="tab-pane active" id="x">
-                        <div class="col text-dark">
-                            <p>$1234</p>
-                            <p>Description X</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sapien diam, lobortis vel mattis vitae, gravida in neque. Integer eu enim quam. Integer blandit libero ultrices tellus fringilla, et consequat lacus finibus. Aliquam erat volutpat. Nullam a dapibus lorem.</p>
+                    @for (var i = 0; i < Model.serviceDetails.categories!.Length; i++)
+                    {
+                        <div class="tab-pane  @(i == 0 ? "active" : "")" id="tab@(i)">
+                            <div class="col text-dark">
+                                <p>$@Model.serviceDetails.categories[i].price</p>
+                                <p>@Model.serviceDetails.categories[i].Title</p>
+                                <p>@Model.serviceDetails.categories[i].Description</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tab-pane" id="y">
-                        <div class="col text-dark">
-                            <p>$1234</p>
-                            <p>Description Y</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sapien diam, lobortis vel mattis vitae, gravida in neque. Integer eu enim quam. Integer blandit libero ultrices tellus fringilla, et consequat lacus finibus. Aliquam erat volutpat. Nullam a dapibus lorem.</p>
-                        </div>
-                    </div>
-                <div class="tab-pane" id="z">
-                    <div class="col text-dark">
-                        <p>$1234</p>
-                        <p>Description Z</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sapien diam, lobortis vel mattis vitae, gravida in neque. Integer eu enim quam. Integer blandit libero ultrices tellus fringilla, et consequat lacus finibus. Aliquam erat volutpat. Nullam a dapibus lorem.</p>
-                    </div>
-                </div>
+                    }
+
                     <button class="btn btn-primary d-flex mx-auto" type="submit">PURCHASE</button>
                 </form>
             </div>
