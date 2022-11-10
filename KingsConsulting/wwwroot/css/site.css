@@ -142,3 +142,11 @@ button.accept-policy {
     white-space: nowrap;
     line-height: 60px;
 }
+
+.form-text {
+    color: var(--warning-color);
+}
+
+.smooth-resize {
+    transition: .25s ease-in-out;
+}

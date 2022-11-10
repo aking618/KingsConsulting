@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/"
 @model KingsConsulting.Pages.LoginModel
 @{
 }
@@ -12,25 +12,34 @@
         </div>
         <div class="col col-md-12">
             <p class="lead">
-                Login for a faster checkout process
+                Login to access our amazing services!
             </p>
         </div>
         <div class="col col-md-12">
-            <label for="inputEmail" class="col-form-label">Your email</label>
-            <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+            <label for="inputEmail" asp-for="Email" class=" col-form-label">Your email</label>
+            <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline" asp-for="Email">
+            <span class="form-text" asp-validation-for="Email"></span>
         </div>
         <div class="col col-md-12">
-            <label for="inputPassword" class="col-form-label">Your password</label>
-            <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline">
-            <span id="passwordHelpInline" class="form-text">
-                Must be 8-20 characters long.
-            </span>
+            <label for="inputPassword" asp-for="Password" class="col-form-label">Your password</label>
+            <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline" asp-for="Password">
+            <span id="passwordHelpInline" class="form-text"asp-validation-for="Password"> </span>
         </div>
         <div class="col col-md-12">
-            <button class="btn btn-outline-primary">LOGIN</button>
+            <input class="btn btn-outline-primary" type="submit" asp-page-handler="Submit" value="LOGIN" />
         </div>
-        <div class="col">
-            Don't have an account yet? <a href="/Register">Sign Up</a>
+        <div class="col col-md-12">
+            <p class="lead">
+                @Model.Message
+            </p>
         </div>
     </div>
 </form>
+
+@* Add section scripts for client-side validation so that invalid data does not get sent to the server *@
+@section Scripts {
+    @{
+        @* This references Javascript files needed for validation. Located in the shared folder*@
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

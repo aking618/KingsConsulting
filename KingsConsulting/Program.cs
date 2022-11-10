@@ -1,7 +1,16 @@
+using KingsConsulting.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<MyApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ??
+                         throw new InvalidOperationException("Connect string not found")));
+
+builder.Services.AddSingleton(_ => builder.Configuration);
+
 // Add services to the container.
-builder.Services.AddRazorPages();//.AddRazorRuntimeCompilation();
+builder.Services.AddRazorPages(); //.AddRazorPagesOptions(options => options.Conventions.AddPageRoute("/Login", ""));
 
 var app = builder.Build();
 

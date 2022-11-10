@@ -7,6 +7,8 @@ namespace KingsConsulting.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        public int UserId { get; set; } = -1;
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -14,7 +16,8 @@ namespace KingsConsulting.Pages
 
         public void OnGet()
         {
-
+            var userId = TempData["userId"] ?? 0;
+            UserId = (int)userId;
         }
     }
 }

@@ -3,7 +3,7 @@
 @{
 }
 
-<div class="row row-cols-1 row-cols-md-2 align-items-center mt-5">
+<div class="row row-cols-1 row-cols-md-2 align-items-center mt-5 smooth-resize">
     <div class="col col-md-12 mb-5">
         <div class="display-5">
             @Model.serviceDetails.Title
@@ -19,10 +19,19 @@
             </div>
             <div class="carousel-inner">
                 @for (var i = 0; i < Model.serviceDetails.imageUrls!.Length; i++)
-                {     
-                    <div class="carousel-item @(i == 0 ? "active" : "")">
-                        <img src="@Model.serviceDetails.imageUrls[i]" class="d-block rounded img-fluid mx-auto" alt="...">
-                    </div>
+                {
+                    @if (i == Model.serviceDetails.imageUrls!.Length - 1)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <iframe src="@Model.serviceDetails.imageUrls[i]" class="d-block rounded mx-auto" alt="..."></iframe>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "") ratio ratio-1x1">
+                            <img src="@Model.serviceDetails.imageUrls[i]" class="d-block rounded img-fluid mx-auto" alt="...">
+                        </div>
+                    }
 
                 }
             </div>

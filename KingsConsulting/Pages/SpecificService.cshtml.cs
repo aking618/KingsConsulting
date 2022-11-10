@@ -29,10 +29,13 @@ namespace KingsConsulting.Pages
                     serviceDetails.categories[1] = new Category("Mobile Consult", "Need advice / help with a current mobile project?", 456);
 
                     serviceDetails.imageUrls = new string[2];
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 1; i++)
                     {
                         serviceDetails.imageUrls[i] = "https://picsum.photos/500?random=" + i + 1;
                     }
+
+                    serviceDetails.imageUrls[1] = "https://www.youtube.com/embed/zpOULjyy-n8?rel=0";
+
                     break;
                 case 1:
                     serviceDetails.Title = "Web Development";
@@ -43,10 +46,12 @@ namespace KingsConsulting.Pages
                     serviceDetails.categories[2] = new Category("X - Pages", "Need advice / help with a current mobile project?", 789);
 
                     serviceDetails.imageUrls = new string[4];
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         serviceDetails.imageUrls[i] = "https://picsum.photos/500?random=" + i + 1;
                     }
+                    serviceDetails.imageUrls[3] = "https://www.youtube.com/embed/zpOULjyy-n8?rel=0";
+
                     break;
                 case 2:
                     serviceDetails.Title = "Mobile Development";
@@ -57,10 +62,12 @@ namespace KingsConsulting.Pages
                     serviceDetails.categories[2] = new Category("X - Screen", "Need advice / help with a current mobile project?", 789);
 
                     serviceDetails.imageUrls = new string[4];
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         serviceDetails.imageUrls[i] = "https://picsum.photos/500?random=" + i + 1;
                     }
+                    serviceDetails.imageUrls[3] = "https://www.youtube.com/embed/zpOULjyy-n8?rel=0";
+
                     break;
             }
         }
