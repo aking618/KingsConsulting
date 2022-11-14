@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KingsConsulting.Models;
+namespace KingsConsulting.Entities;
 
 public partial class UserInfo
 {
@@ -9,7 +9,9 @@ public partial class UserInfo
 
     public string Email { get; set; } = null!;
 
-    public string Passcode { get; set; } = null!;
+    public string FirstName { get; set; } = null!;
+
+    public string LastName { get; set; } = null!;
 
     public virtual ICollection<OrderInfo> OrderInfos { get; } = new List<OrderInfo>();
 }

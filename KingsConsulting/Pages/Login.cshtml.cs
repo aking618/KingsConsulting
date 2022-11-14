@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using KingsConsulting.Models;
+using KingsConsulting.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -46,37 +46,50 @@ namespace KingsConsulting.Pages
 
             var strConn = configuration.GetConnectionString("DefaultConnection");
 
-            using SqlConnection sqlConn = new(strConn);
-            SqlCommand selectUserCommand = new SqlCommand("spSelectUserInfo", sqlConn);
-            selectUserCommand.CommandType = CommandType.StoredProcedure;
-
-            selectUserCommand.Parameters.AddWithValue("@Email", Email);
-            selectUserCommand.Parameters.AddWithValue("@Password", Password);
-
-            try
+            using (SqlConnection sqlConn = new(strConn))
             {
-                sqlConn.Open();
-                SqlDataReader reader = selectUserCommand.ExecuteReader();
-                var result = -1;
-                if (reader.Read())
-                    result = int.Parse(reader["userId"].ToString());
+                SqlDataAdapter sqlDataValidator = new SqlDataAdapter("spValidateUser", sqlConn);
+                sqlDataValidator.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-                if (result <= 0)
+                sqlDataValidator.SelectCommand.Parameters.AddWithValue("@email", Email);
+                sqlDataValidator.SelectCommand.Parameters.AddWithValue("@passcode", Password);
+
+                try
                 {
-                    Message = "The user credentials provided do not match any current users";
+                    DataSet dsUserRecord = new DataSet();
+
+                    sqlDataValidator.Fill(dsUserRecord);
+
+                    if (dsUserRecord.Tables[0].Rows.Count == 0)
+                    {
+                        Message = "Invalid login, please try again";
+                        return Page();
+                    }
+
+                    MyUserInfo = new UserInfo();
+                    MyUserInfo.UserId = Convert.ToInt32(dsUserRecord.Tables[0].Rows[0]["userId"]);
+                    MyUserInfo.Email = dsUserRecord.Tables[0].Rows[0]["email"].ToString();
+                    MyUserInfo.FirstName = dsUserRecord.Tables[0].Rows[0]["firstName"].ToString();
+                    MyUserInfo.LastName = dsUserRecord.Tables[0].Rows[0]["lastName"].ToString();
+
+                    HttpContext.Session.SetString("UserId", MyUserInfo.UserId.ToString());
+                    HttpContext.Session.SetString("Email", MyUserInfo.Email!);
+                    HttpContext.Session.SetString("FirstName", MyUserInfo.FirstName!);
+                    HttpContext.Session.SetString("LastName", MyUserInfo.LastName!);
+
+                    Email = String.Empty;
+                    Password = String.Empty;
+                    ModelState.Clear();
+
+                    return Redirect("/Index");
+
+                }
+                catch(Exception e)
+                {
+                    Message = e.Message;
                     return Page();
                 }
-
-                TempData["userId"] = result;
-                return RedirectToPage("Index");
-
-            }
-            catch (Exception e)
-            {
-                Message = e.Message;
-                return Page();
-            }
-
+            };
         }
     }
 }

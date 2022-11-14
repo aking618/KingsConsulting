@@ -7,7 +7,7 @@ namespace KingsConsulting.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public int UserId { get; set; } = -1;
+        public string Message { get; set; } = string.Empty;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -16,8 +16,15 @@ namespace KingsConsulting.Pages
 
         public void OnGet()
         {
-            var userId = TempData["userId"] ?? 0;
-            UserId = (int)userId;
+            var userId = HttpContext.Session.GetString("UserId");
+            var email = HttpContext.Session.GetString("Email");
+            var firstName = HttpContext.Session.GetString("FirstName");
+            var lastName = HttpContext.Session.GetString("LastName");
+
+            if (email != null && email != "")
+            {
+                Message = "Welcome " + firstName + ", to ";
+            }
         }
     }
 }

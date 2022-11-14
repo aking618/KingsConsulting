@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" />
     <None Remove="Model\" />
+    <None Remove="Microsoft.AspNetCore.DataProtection" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.10" />
@@ -18,8 +19,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
+    <Folder Include="wwwroot\sql\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\sql\" />
   </ItemGroup>
 </Project>

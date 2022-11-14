@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using KingsConsulting.Models;
+using KingsConsulting.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace KingsConsulting.Data;
@@ -91,13 +91,17 @@ public partial class MyApplicationDbContext : DbContext
 
             entity.Property(e => e.UserId).HasColumnName("userId");
             entity.Property(e => e.Email)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("email");
-            entity.Property(e => e.Passcode)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("passcode");
+            entity.Property(e => e.FirstName)
+               .HasMaxLength(100)
+               .IsUnicode(false)
+               .HasColumnName("firstName");
+            entity.Property(e => e.LastName)
+               .HasMaxLength(100)
+               .IsUnicode(false)
+               .HasColumnName("lastName");
         });
 
         OnModelCreatingPartial(modelBuilder);

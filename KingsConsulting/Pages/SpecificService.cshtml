@@ -20,19 +20,9 @@
             <div class="carousel-inner">
                 @for (var i = 0; i < Model.serviceDetails.imageUrls!.Length; i++)
                 {
-                    @if (i == Model.serviceDetails.imageUrls!.Length - 1)
-                    {
-                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <iframe src="@Model.serviceDetails.imageUrls[i]" class="d-block rounded mx-auto" alt="..."></iframe>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="carousel-item @(i == 0 ? "active" : "") ratio ratio-1x1">
-                            <img src="@Model.serviceDetails.imageUrls[i]" class="d-block rounded img-fluid mx-auto" alt="...">
-                        </div>
-                    }
-
+                    <div class="carousel-item @(i == 0 ? "active" : "") ratio ratio-1x1">
+                        <img src="@Model.serviceDetails.imageUrls[i]" class="d-block rounded img-fluid mx-auto" alt="...">
+                    </div>
                 }
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

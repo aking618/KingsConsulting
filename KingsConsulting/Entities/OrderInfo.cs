@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KingsConsulting.Models;
+namespace KingsConsulting.Entities;
 
 public partial class OrderInfo
 {
