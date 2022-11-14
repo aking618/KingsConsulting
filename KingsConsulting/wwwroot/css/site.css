@@ -150,3 +150,7 @@ button.accept-policy {
 .smooth-resize {
     transition: .25s ease-in-out;
 }
+
+.video-width-max {
+    max-width: 100%;
+}

@@ -23,7 +23,7 @@ namespace KingsConsulting.Pages
 
             if (email != null && email != "")
             {
-                Message = "Welcome " + firstName + ", to ";
+                Message = "Welcome " + firstName + ", to <br/>";
             }
         }
     }

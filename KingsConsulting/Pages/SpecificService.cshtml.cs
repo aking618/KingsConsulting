@@ -16,6 +16,10 @@ namespace KingsConsulting.Pages
 
         public void OnGet(int postId)
         {
+
+            // do request here with postId
+
+
             serviceDetails = new ServiceDetails();
 
             switch (postId)
