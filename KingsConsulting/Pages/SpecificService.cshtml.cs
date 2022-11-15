@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 using KingsConsulting.Model;
 
@@ -11,64 +13,58 @@ namespace KingsConsulting.Pages
 {
     public class SpecificServiceModel : PageModel
     {
+
+        private readonly IConfiguration configuration;
+
+        public SpecificServiceModel(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
         [BindProperty]
         public ServiceDetails serviceDetails { get; set; }
 
         public void OnGet(int postId)
         {
 
-            // do request here with postId
+            var strConn = configuration.GetConnectionString("DefaultConnection");
 
-
-            serviceDetails = new ServiceDetails();
-
-            switch (postId)
+            using (SqlConnection sqlConn = new(strConn))
             {
-                case 0:
-                    
-                    serviceDetails.Title = "General Consulting";
+                SqlDataAdapter sqlDataValidator = new SqlDataAdapter("spGetSpecificServiceByCategory", sqlConn);
+                sqlDataValidator.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-                    serviceDetails.categories = new Category[2];
-                    serviceDetails.categories[0] = new Category("Web Consult", "Need advice / help with a current web project?", 123);
-                    serviceDetails.categories[1] = new Category("Mobile Consult", "Need advice / help with a current mobile project?", 456);
+                sqlDataValidator.SelectCommand.Parameters.AddWithValue("@serviceCategoryID", postId);
 
-                    serviceDetails.imageUrls = new string[2];
-                    for (int i = 0; i < 2; i++)
+                try
+                {
+                    DataSet dsUserRecord = new DataSet();
+
+                    sqlDataValidator.Fill(dsUserRecord);
+
+                    var table = dsUserRecord.Tables[0];
+                    serviceDetails = new ServiceDetails();
+                    serviceDetails.categories = new Category[table.Rows.Count];
+                    serviceDetails.imageUrls = new string[table.Rows.Count];
+
+                    for (int i = 0; i < table.Rows.Count; i++)
                     {
+                        var row = table.Rows[i];
+                        
+                        serviceDetails.Title = row["ServiceCategoryName"].ToString();
+                        serviceDetails.categories[i] = new Category(
+                                row["serviceName"].ToString(),
+                                row["serviceDescription"].ToString(),
+                                Convert.ToInt32(row["servicePrice"])
+                            );
                         serviceDetails.imageUrls[i] = "https://picsum.photos/500?random=" + i + 1;
                     }
 
-                    break;
-                case 1:
-                    serviceDetails.Title = "Web Development";
-
-                    serviceDetails.categories = new Category[3];
-                    serviceDetails.categories[0] = new Category("Mockup", "Need advice / help with a current web project?", 123);
-                    serviceDetails.categories[1] = new Category("Home Page", "Need advice / help with a current mobile project?", 456);
-                    serviceDetails.categories[2] = new Category("X - Pages", "Need advice / help with a current mobile project?", 789);
-
-                    serviceDetails.imageUrls = new string[4];
-                    for (int i = 0; i < 3; i++)
-                    {
-                        serviceDetails.imageUrls[i] = "https://picsum.photos/500?random=" + i + 1;
-                    }
-
-                    break;
-                case 2:
-                    serviceDetails.Title = "Mobile Development";
-
-                    serviceDetails.categories = new Category[3];
-                    serviceDetails.categories[0] = new Category("Mockup", "Need advice / help with a current web project?", 123);
-                    serviceDetails.categories[1] = new Category("Home Screen", "Need advice / help with a current mobile project?", 456);
-                    serviceDetails.categories[2] = new Category("X - Screen", "Need advice / help with a current mobile project?", 789);
-
-                    serviceDetails.imageUrls = new string[4];
-                    for (int i = 0; i < 3; i++)
-                    {
-                        serviceDetails.imageUrls[i] = "https://picsum.photos/500?random=" + i + 1;
-                    }
-
-                    break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
