@@ -1,5 +1,5 @@
-﻿@page "/"
-@model KingsConsulting.Pages.LoginModel
+﻿@page
+@model KingsConsulting.Pages.RegisterModel
 @{
 }
 
@@ -7,13 +7,23 @@
     <div class="row row-cols-1 row-cols-md-2 g-3 align-items-center mt-5">
         <div class="col col-md-12">
             <div class="display-5">
-                Hello Again!
+                Welcome!
             </div>
         </div>
         <div class="col col-md-12">
             <p class="lead">
-                Login to access our amazing services!
+                Register for a quicker and smoother experience!
             </p>
+        </div>
+        <div class="col col-md-12">
+            <label for="inputfName" asp-for="FirstName" class=" col-form-label">First name</label>
+            <input type="text" id="inputfName" class="form-control" aria-describedby="fNameHelpInLine" asp-for="FirstName">
+            <span class="form-text" asp-validation-for="FirstName"></span>
+        </div>
+        <div class="col col-md-12">
+            <label for="inputlName" asp-for="LastName" class=" col-form-label">Last name</label>
+            <input type="text" id="inputlName" class="form-control" aria-describedby="fNameHelpInLine" asp-for="LastName">
+            <span class="form-text" asp-validation-for="LastName"></span>
         </div>
         <div class="col col-md-12">
             <label for="inputEmail" asp-for="Email" class=" col-form-label">Your email</label>
@@ -23,18 +33,19 @@
         <div class="col col-md-12">
             <label for="inputPassword" asp-for="Password" class="col-form-label">Your password</label>
             <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline" asp-for="Password">
-            <span id="passwordHelpInline" class="form-text"asp-validation-for="Password"> </span>
+            <span id="passwordHelpInline" class="form-text" asp-validation-for="Password"> </span>
         </div>
         <div class="col col-md-12">
-            <input class="btn btn-outline-primary" type="submit" asp-page-handler="Submit" value="LOGIN" />
+            <input class="btn btn-secondary" type="submit" asp-page-handler="Cancel" value="CANCEL" />
+            <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="REGISTER"/>
         </div>
         <div class="col col-md-12">
             <p class="lead">
-                @Model.Message
+                @Model.StatusMessage
             </p>
         </div>
         <div class="col col-md-12">
-            <span>Need an account? </span><a asp-page="/Register">Register here!</a>
+            <span>Already have an account? </span><a asp-page="/Login">Login here!</a>
         </div>
     </div>
 </form>
@@ -45,4 +56,5 @@
         @* This references Javascript files needed for validation. Located in the shared folder*@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+    }
+

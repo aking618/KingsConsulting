@@ -77,8 +77,8 @@ namespace KingsConsulting.Pages
                     HttpContext.Session.SetString("FirstName", MyUserInfo.FirstName!);
                     HttpContext.Session.SetString("LastName", MyUserInfo.LastName!);
 
-                    Email = String.Empty;
-                    Password = String.Empty;
+                    Email = string.Empty;
+                    Password = string.Empty;
                     ModelState.Clear();
 
                     return Redirect("/Index");
