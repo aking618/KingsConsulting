@@ -13,7 +13,7 @@ builder.Services.AddSession();
 builder.Services.AddSingleton(_ => builder.Configuration);
 
 // Add services to the container.
-builder.Services.AddRazorPages(); //.AddRazorPagesOptions(options => options.Conventions.AddPageRoute("/Login", ""));
+builder.Services.AddRazorPages().AddRazorPagesOptions(options => options.Conventions.AddPageRoute("/Login", ""));
 
 var app = builder.Build();
 

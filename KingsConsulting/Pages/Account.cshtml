@@ -2,3 +2,32 @@
 @model KingsConsulting.Pages.AccountModel
 @{
 }
+
+<form method="post">
+    <div class="row align-items-center">
+        <div class="col gap-3">
+            @if (Model.IsUserActive)
+            {
+                <div class="display-5 mb-5">My Account</div>
+                <div class="account-row gap-2 mb-2">
+                    <h6 class=" min-width">Email:</h6>
+                    <div>@Model.Email</div>
+                </div>
+                <div class="account-row gap-2 mb-2">
+                    <h6 class="min-width">First Name:</h6>
+                    <div>@Model.FirstName</div>
+                </div>
+                <div class="account-row gap-2 mb-2">
+                    <h6 class="min-width">Last Name:</h6>
+                    <div>@Model.LastName</div>
+                </div>
+                <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="LOGOUT" />
+            }
+            else
+            {
+                <div class="display-5 mb-5">No active user</div>
+                <a asp-page="/Login">Login Here</a>
+            }
+        </div>
+    </div>
+</form>

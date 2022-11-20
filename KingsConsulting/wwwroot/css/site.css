@@ -154,3 +154,11 @@ button.accept-policy {
 .video-width-max {
     max-width: 100%;
 }
+
+.account-row {
+    display: flex;
+}
+
+h6 {
+    line-height: unset;
+}
