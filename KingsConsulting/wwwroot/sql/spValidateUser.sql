@@ -11,7 +11,7 @@ create procedure spValidateUser
 )
 as
 begin
-    select userId, email, firstName, lastName
+    select userId, email, firstName, lastName, phoneNumber
     from UserInfo
     where email = @email
     and passcode = hashbytes('SHA2_256', concat(passwordSalt, @passcode))

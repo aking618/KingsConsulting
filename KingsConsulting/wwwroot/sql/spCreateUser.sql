@@ -8,6 +8,7 @@ create procedure spCreateUser
     (
     @firstName varchar(100),
     @lastName varchar(100),
+    @phone varchar(100),
     @email varchar(100),
     @passcode varchar(100)
 )
@@ -21,13 +22,13 @@ begin
     set @hashPass = hashbytes('SHA2_256', concat(@salt, @passcode))
 
     insert into UserInfo
-        (firstName, lastName, email, passcode, passwordSalt)
+        (firstName, lastName, email, phoneNumber, passcode, passwordSalt)
     values
         (
-            @firstName, @lastName, @email, @hashPass, @salt
+            @firstName, @lastName, @email, @phone, @hashPass, @salt
     )
 
-    select userId, firstName, lastName, email
+    select userId, firstName, lastName, phoneNumber, email
     from UserInfo
     where userId = SCOPE_IDENTITY()
 end

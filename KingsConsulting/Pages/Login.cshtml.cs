@@ -71,11 +71,13 @@ namespace KingsConsulting.Pages
                     MyUserInfo.Email = dsUserRecord.Tables[0].Rows[0]["email"].ToString();
                     MyUserInfo.FirstName = dsUserRecord.Tables[0].Rows[0]["firstName"].ToString();
                     MyUserInfo.LastName = dsUserRecord.Tables[0].Rows[0]["lastName"].ToString();
+                    MyUserInfo.PhoneNumber = dsUserRecord.Tables[0].Rows[0]["phoneNumber"].ToString();
 
                     HttpContext.Session.SetString("UserId", MyUserInfo.UserId.ToString());
                     HttpContext.Session.SetString("Email", MyUserInfo.Email!);
                     HttpContext.Session.SetString("FirstName", MyUserInfo.FirstName!);
                     HttpContext.Session.SetString("LastName", MyUserInfo.LastName!);
+                    HttpContext.Session.SetString("PhoneNumber", MyUserInfo.PhoneNumber!);
 
                     Email = string.Empty;
                     Password = string.Empty;

@@ -21,7 +21,7 @@ begin
         serviceID int not null,
         quantity int not null,
         foreign key (orderID) references OrderInfo(orderID),
-        foreign key (serviceTypeID) references ServiceType(serviceTypeID)
+        foreign key (serviceID) references ServiceType(serviceTypeID)
     )
 end
 go

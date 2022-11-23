@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -13,11 +14,23 @@ namespace KingsConsulting.Pages
 
         public string LastName { get; set; } = string.Empty;
 
+        public string PhoneNumber { get; set; } = string.Empty;
+
+        public string FormatPhoneNumber(string phone)
+        {
+            Regex regex = new Regex(@"[^\d]");
+            phone = regex.Replace(phone, "");
+            string format = "###-###-####";
+            phone = Convert.ToInt64(phone).ToString(format);
+            return phone;
+        }
+
         public void OnGet()
         {
             Email = HttpContext.Session.GetString("Email");
             FirstName = HttpContext.Session.GetString("FirstName");
             LastName = HttpContext.Session.GetString("LastName");
+            PhoneNumber = HttpContext.Session.GetString("PhoneNumber");
 
             if (Email != null && Email != "")
             {
