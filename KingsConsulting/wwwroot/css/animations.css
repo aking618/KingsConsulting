@@ -2,6 +2,15 @@
     animation: fade-in 1s ease-in backwards;
 }
 
+.animate-slide {
+    animation: slide-in 1s cubic-bezier(1, -0.03, 0, 0.99) backwards;
+}
+
+.animate-up {
+    animation: slide-up 1s cubic-bezier(.645, -0.03, 0, 0.99) backwards;
+}
+
+
 .delay-1 {
     animation-delay: 0.6s;
 }
@@ -51,5 +60,27 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(200%);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
     }
 }

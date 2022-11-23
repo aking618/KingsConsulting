@@ -6,26 +6,26 @@
 <form method="post">
     <div class="row row-cols-1 row-cols-md-2 g-3 align-items-center mt-5">
         <div class="col col-md-12">
-            <div class="display-5">
+            <div class="display-5 animate-fade">
                 Hello Again!
             </div>
         </div>
         <div class="col col-md-12">
-            <p class="lead">
+            <p class="lead animate-fade delay-1">
                 Login to access our amazing services!
             </p>
         </div>
-        <div class="col col-md-12">
+        <div class="col col-md-12 animate-up delay-2">
             <label for="inputEmail" asp-for="Email" class=" col-form-label">Your email</label>
             <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline" asp-for="Email">
             <span class="form-text" asp-validation-for="Email"></span>
         </div>
-        <div class="col col-md-12">
+        <div class="col col-md-12 animate-up delay-3">
             <label for="inputPassword" asp-for="Password" class="col-form-label">Your password</label>
             <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline" asp-for="Password">
             <span id="passwordHelpInline" class="form-text"asp-validation-for="Password"> </span>
         </div>
-        <div class="col col-md-12">
+        <div class="col col-md-12 animate-up delay-4">
             <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="LOGIN" />
         </div>
         <div class="col col-md-12">
@@ -33,7 +33,7 @@
                 @Model.Message
             </p>
         </div>
-        <div class="col col-md-12">
+        <div class="col col-md-12 animate-fade delay-5">
             <span>Need an account? </span><a asp-page="/Register">Register here!</a>
         </div>
     </div>
