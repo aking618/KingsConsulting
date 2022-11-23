@@ -26,6 +26,11 @@
             <span class="form-text" asp-validation-for="LastName"></span>
         </div>
         <div class="col col-md-12">
+            <label for="inputPhone" asp-for="PhoneNumber" class=" col-form-label">Your phone number</label>
+            <input type="tel" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline" asp-for="PhoneNumber">
+            <span class="form-text" asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div class="col col-md-12">
             <label for="inputEmail" asp-for="Email" class=" col-form-label">Your email</label>
             <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline" asp-for="Email">
             <span class="form-text" asp-validation-for="Email"></span>
@@ -37,7 +42,7 @@
         </div>
         <div class="col col-md-12">
             <input class="btn btn-secondary" type="submit" asp-page-handler="Cancel" value="CANCEL" />
-            <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="REGISTER"/>
+            <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="REGISTER" />
         </div>
         <div class="col col-md-12">
             <p class="lead">

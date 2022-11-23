@@ -13,6 +13,7 @@ begin
         firstName varchar(100) not null,
         lastName varchar(100) not null,
         email varchar(100) not null,
+        phoneNumber varchar(100) not null,
         passcode varbinary(max) not null,
         passwordSalt char(100) not null,
         createdOn datetime default getdate() not null

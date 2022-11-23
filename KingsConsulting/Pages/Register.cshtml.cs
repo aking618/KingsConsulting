@@ -25,9 +25,16 @@ namespace KingsConsulting.Pages
         public string Email { get; set; } = string.Empty;
 
         [BindProperty]
+        [Display(Name = "Phone Number")]
+        [Required(ErrorMessage = "Please enter your phone number.")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        public string PhoneNumber { get; set; } = string.Empty;
+
+        [BindProperty]
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Please enter your password")]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Password length must be between 6 and 20 characters.")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password length must be at least 6 characters.")]
         public string Password { get; set; } = string.Empty;
 
         public string StatusMessage { get; set; } = string.Empty;
@@ -51,6 +58,7 @@ namespace KingsConsulting.Pages
             FirstName = string.Empty;
             LastName = string.Empty;
             Email = string.Empty;
+            PhoneNumber = string.Empty;
             StatusMessage = string.Empty;
 
             return Page();
@@ -74,6 +82,7 @@ namespace KingsConsulting.Pages
                 sqlDataValidator.SelectCommand.Parameters.AddWithValue("@lastName", LastName);
                 sqlDataValidator.SelectCommand.Parameters.AddWithValue("@email", Email);
                 sqlDataValidator.SelectCommand.Parameters.AddWithValue("@passcode", Password);
+                sqlDataValidator.SelectCommand.Parameters.AddWithValue("@phone", PhoneNumber);
 
                 try
                 {
@@ -92,15 +101,19 @@ namespace KingsConsulting.Pages
                     NewUserInfo.Email = dsUserRecord.Tables[0].Rows[0]["email"].ToString();
                     NewUserInfo.FirstName = dsUserRecord.Tables[0].Rows[0]["firstName"].ToString();
                     NewUserInfo.LastName = dsUserRecord.Tables[0].Rows[0]["lastName"].ToString();
+                    NewUserInfo.PhoneNumber = dsUserRecord.Tables[0].Rows[0]["phoneNumber"].ToString();
 
                     HttpContext.Session.SetString("UserId", NewUserInfo.UserId.ToString());
                     HttpContext.Session.SetString("Email", NewUserInfo.Email!);
                     HttpContext.Session.SetString("FirstName", NewUserInfo.FirstName!);
                     HttpContext.Session.SetString("LastName", NewUserInfo.LastName!);
+                    HttpContext.Session.SetString("PhoneNumber", NewUserInfo.PhoneNumber!);
+
 
                     FirstName = string.Empty;
                     LastName = string.Empty;
                     Email = string.Empty;
+                    PhoneNumber = string.Empty;
                     Password = string.Empty;
                     ModelState.Clear();
 
