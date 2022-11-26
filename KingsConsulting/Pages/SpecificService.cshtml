@@ -5,11 +5,11 @@
 
 <div class="row row-cols-1 row-cols-md-2 align-items-center mt-5 smooth-resize">
     <div class="col col-md-12 mb-5">
-        <div class="display-5">
+        <div class="display-5 animate-fade">
             @Model.serviceDetails.Title
         </div>
     </div>
-    <div class="col">
+    <div class="col animate-slide-left">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 @for (var i = 0; i < Model.serviceDetails.imageUrls!.Length; i++)
@@ -35,14 +35,14 @@
             </button>
         </div>
     </div>
-    <div class="col p-3">
+    <div class="col p-3 animate-slide-right">
         <div class="card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
                         @for (var i = 0; i < Model.serviceDetails.categories!.Length; i++)
                         {
                             <li class="nav-item">
-                                <a class="nav-link @(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "")" data-bs-toggle="tab" href="#tab@(i)">@Model.serviceDetails.categories[i].Title</a>
+                                <a class="service-tabs nav-link @(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "")" data-bs-toggle="tab" href="#tab@(i)">@Model.serviceDetails.categories[i].Title</a>
                             </li>
                         }
                     </ul>
@@ -50,7 +50,7 @@
                 <form class="card-body tab-content">
                     @for (var i = 0; i < Model.serviceDetails.categories!.Length; i++)
                     {
-                        <div class="tab-pane  @(i == 0 ? "active" : "")" id="tab@(i)">
+                        <div class="tab-pane @(i == 0 ? "active" : "")" id="tab@(i)">
                             <div class="col text-dark">
                                 <p>$@Model.serviceDetails.categories[i].price</p>
                                 <p>@Model.serviceDetails.categories[i].Title</p>

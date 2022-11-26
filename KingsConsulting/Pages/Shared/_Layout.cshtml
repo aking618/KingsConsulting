@@ -36,7 +36,18 @@
                         </li>
                         <li class="flex-grow-1"></li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Account"><span class="fa-solid fa-user fa-lg"></span></a>
+                            <a class="nav-link" asp-area="" asp-page="/Account">
+                                @if (Context.Session.GetString("Email") == null || Context.Session.GetString("Email") == "")
+                                {
+                                    <span class="fa-solid fa-user fa-lg"></span>
+
+                                }
+                                else
+                                {
+                                    <span class="fa-solid fa-otter fa-lg"></span>
+                                }
+                            </a>
+
                         </li>
                     </ul>
                 </div>

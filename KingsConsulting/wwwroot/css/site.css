@@ -162,3 +162,8 @@ button.accept-policy {
 h6 {
     line-height: unset;
 }
+
+.service-tabs:hover {
+    transform: translateY(-0.25rem);
+    transition: all 0.25s;
+}

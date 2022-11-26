@@ -6,25 +6,25 @@
     <form method="post">
         <div class="row row-cols-1 row-cols-md-2 g-3 mt-5 align-items-center">
             <div class="col col-md-12">
-                <div class="display-5">
+                <div class="display-5 animate-fade">
                     Questions? Get in touch
                 </div>
             </div>
-            <div class="col col-md-6">
+            <div class="col col-md-6 animate-up delay-1">
                 <label for="inputName" class="col-form-label">Your name</label>
                 <input type="text" id="inputName" class="form-control" aria-describedby="nameHelpInline">
                 <span id="nameHelpInline" class="form-text">
                     Must be 8-20 characters long.
                 </span>
             </div>
-            <div class="col col-md-6">
+            <div class="col col-md-6 animate-up delay-2">
                 <label for="inputEmail" class="col-form-label">Your email</label>
                 <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
                 <span id="nameHelpInline" class="form-text">
                     Must be 8-20 characters long.
                 </span>
             </div>
-            <div class="col col-md-6">
+            <div class="col col-md-6 animate-up delay-3">
                 <label for="selectCategory" class="col-form-label">What you are interested in</label>
                 <select class="form-select" id="selectCategory" aria-label="Service selection">
                     <option selected value="1">General Consulting</option>
@@ -32,7 +32,7 @@
                     <option value="3">Mobile Development</option>
                 </select>
             </div>
-            <div class="col col-md-6">
+            <div class="col col-md-6 animate-up delay-4">
                 <label for="selectBudget" class="col-form-label">Project budget</label>
                 <select class="form-select" id="selectBudget" aria-label="Budget selection">
                     <option selected value="1">Less than $50</option>
@@ -42,13 +42,19 @@
                     <option value="3">Other</option>
                 </select>
             </div>
-            <div class="col col-md-12">
+            <div class="col col-md-12 animate-up delay-5">
                 <label for="inputMessage" class="col-form-label">Message</label>
                 <textarea id="inputMessage" rows="3" class="form-control" aria-describedby="messageHelpInline"></textarea>
             </div>
-            <div class="col">
+            <div class="col animate-up delay-6">
                 <button class="btn btn-primary">SEND</button>
             </div>
         </div>
     </form>
+
+@{/* TODO: Add client side validation to this form
+           Update the model to contain all of the fields.
+           Add a cancel button
+           Do show something to show that message was successful
+    */}
 

@@ -58,6 +58,7 @@ namespace KingsConsulting.Pages
             FirstName = string.Empty;
             LastName = string.Empty;
             Email = string.Empty;
+            Password = string.Empty;
             PhoneNumber = string.Empty;
             StatusMessage = string.Empty;
 

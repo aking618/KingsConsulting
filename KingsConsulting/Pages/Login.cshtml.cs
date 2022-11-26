@@ -36,6 +36,15 @@ namespace KingsConsulting.Pages
         {
         }
 
+        public IActionResult OnPostCancel()
+        {
+            ModelState.Clear();
+            Email = string.Empty;
+            Password = string.Empty;
+
+            return Page();
+        }
+
         public IActionResult OnPostSubmit()
         {
             // check if model state is valid
