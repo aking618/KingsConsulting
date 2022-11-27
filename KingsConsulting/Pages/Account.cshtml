@@ -8,29 +8,29 @@
         <div class="col gap-3">
             @if (Model.IsUserActive)
             {
-                <div class="display-5 mb-5">My Account</div>
-                <div class="account-row gap-2 mb-2">
+                <div class="display-5 mb-5 animate-fade">My Account</div>
+                <div class="account-row gap-2 mb-2 animate-slide-left delay-1">
                     <h6 class=" min-width">Email:</h6>
                     <div>@Model.Email</div>
                 </div>
-                <div class="account-row gap-2 mb-2">
+                <div class="account-row gap-2 mb-2 animate-slide-left delay-2">
                     <h6 class="min-width">First Name:</h6>
                     <div>@Model.FirstName</div>
                 </div>
-                <div class="account-row gap-2 mb-2">
+                <div class="account-row gap-2 mb-2 animate-slide-left delay-3">
                     <h6 class="min-width">Last Name:</h6>
                     <div>@Model.LastName</div>
                 </div>
-                <div class="account-row gap-2 mb-2">
+                <div class="account-row gap-2 mb-2 animate-slide-left delay-4">
                     <h6 class="min-width">Phone Number:</h6>
                     <div>@Model.FormatPhoneNumber(Model.PhoneNumber)</div>
                 </div>
-                <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="LOGOUT" />
+                <input class="btn btn-primary animate-up delay-5" type="submit" asp-page-handler="Submit" value="LOGOUT" />
             }
             else
             {
-                <div class="display-5 mb-5">No active user</div>
-                <a asp-page="/Login">Login Here</a>
+                <div class="display-5 mb-5">No Active User Logged In</div>
+                <a asp-page="/Login">Please Login Here</a>
             }
         </div>
     </div>
