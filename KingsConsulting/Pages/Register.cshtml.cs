@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using KingsConsulting.Entities;
+using KingsConsulting.Model;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
@@ -118,12 +119,15 @@ namespace KingsConsulting.Pages
                     Password = string.Empty;
                     ModelState.Clear();
 
-                    return Redirect("/Index");
+                    TempData[Constants.AlertSuccess] = "<strong>Account Creation Successful!</strong> Please login now!";
+
+                    return Redirect("/Login");
 
                 }
                 catch (Exception e)
                 {
                     StatusMessage = e.Message;
+                    TempData[Constants.AlertWarning] = "Unable to create account.";
                     return Page();
                 }
             };

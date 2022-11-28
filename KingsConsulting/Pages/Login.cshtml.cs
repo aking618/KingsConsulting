@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using KingsConsulting.Entities;
+using KingsConsulting.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -18,7 +19,7 @@ namespace KingsConsulting.Pages
         [BindProperty]
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Please enter your password")]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Password length must be between 6 and 20 characters.")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password length must be at least 6 characters.")]
         public string Password { get; set; } = string.Empty;
 
         public string Message { get; set; } = string.Empty;
@@ -92,12 +93,15 @@ namespace KingsConsulting.Pages
                     Password = string.Empty;
                     ModelState.Clear();
 
+                    TempData[Constants.AlertSuccess] = "Login Successful!";
+
                     return Redirect("/Index");
 
                 }
                 catch(Exception e)
                 {
                     Message = e.Message;
+                    TempData[Constants.AlertWarning] = "Unable to login.";
                     return Page();
                 }
             };

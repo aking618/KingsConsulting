@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using KingsConsulting.Model;
 
 namespace KingsConsulting.Pages
 {
@@ -44,7 +45,7 @@ namespace KingsConsulting.Pages
         {
             HttpContext.Session.Clear();
 
-            System.Diagnostics.Debug.WriteLine("Hello from here");
+            TempData[Constants.AlertSuccess] = Email == string.Empty ? null : "Logout Successful!";
 
             return Redirect("/Login");
         }

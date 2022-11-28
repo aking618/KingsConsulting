@@ -56,6 +56,27 @@
     </header>
     <div class="container text-light">
         <main role="main" class="pb-3">
+            @if (TempData[KingsConsulting.Model.Constants.AlertSuccess] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @Html.Raw(@TempData[KingsConsulting.Model.Constants.AlertSuccess])
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData[KingsConsulting.Model.Constants.AlertDanger] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @Html.Raw(@TempData[KingsConsulting.Model.Constants.AlertDanger])
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData[KingsConsulting.Model.Constants.AlertWarning] != null)
+            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    @Html.Raw(@TempData[KingsConsulting.Model.Constants.AlertWarning])
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
             @RenderBody()
         </main>
     </div>

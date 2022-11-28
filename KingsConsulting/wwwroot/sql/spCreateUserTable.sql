@@ -9,7 +9,7 @@ as
 begin
     create table UserInfo
     (
-        userId int identity(1,1) primary key not null,
+        userId int identity(1,1) constraint PK_UserInfo primary key not null,
         firstName varchar(100) not null,
         lastName varchar(100) not null,
         email varchar(100) not null,
