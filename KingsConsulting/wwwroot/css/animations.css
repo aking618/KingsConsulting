@@ -18,6 +18,11 @@
     animation: bounce 1s cubic-bezier(0.645, -0.03, 0, 0.99) infinite;
 }
 
+.animate-arrow {
+    animation: fade-in 1s ease-in backwards, bounce 1s linear infinite;
+    animation-delay: 1s, 2s;
+}
+
 .delay-1 {
     animation-delay: 0.6s;
 }
