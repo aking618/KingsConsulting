@@ -10,7 +10,7 @@ create procedure spGetSpecificServiceByCategory
 )
 as
 begin
-    select c.ServiceCategoryName, t.serviceName, t.serviceDescription, t.servicePrice, t.serviceTypeID
+    select c.ServiceCategoryName, t.serviceName, t.serviceDescription, t.servicePrice, t.serviceImage, t.serviceTypeID
     from ServiceCategory c
         join ServiceType t
         on c.ServiceCategoryID = t.ServiceCategoryID

@@ -266,10 +266,15 @@ h1,
 h2,
 .navbar,
 .display-5,
+.display-6,
 .lead {
     font-family: "DM Serif Display", serif;
 }
 
 .service-box {
     min-height: 300px;
+}
+
+.line-zero {
+    line-height: 0;
 }

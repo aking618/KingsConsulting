@@ -57,7 +57,7 @@ namespace KingsConsulting.Pages
                                 row["serviceDescription"].ToString(),
                                 Convert.ToInt32(row["servicePrice"])
                             );
-                        serviceDetails.imageUrls[i] = "https://picsum.photos/500?random=" + i + 1;
+                        serviceDetails.imageUrls[i] = "../images/" + row["serviceImage"].ToString();
                     }
 
                 }
