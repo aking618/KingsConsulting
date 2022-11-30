@@ -46,8 +46,14 @@
             <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline" asp-for="Password">
             <span id="passwordHelpInline" class="form-text" asp-validation-for="Password"> </span>
         </div>
-        @* Buttons *@
+        @* Confirm Password *@
         <div class="col col-md-12 animate-up delay-7">
+            <label for="inputConfirmPassword" asp-for="ConfirmPassword" class="col-form-label">Confirm your password</label>
+            <input type="password" id="inputConfirmPassword" class="form-control" aria-describedby="confirmPasswordHelpInline" asp-for="ConfirmPassword">
+            <span id="confirmPasswordHelpInline" class="form-text" asp-validation-for="ConfirmPassword"> </span>
+        </div>
+        @* Buttons *@
+        <div class="col col-md-12 animate-up delay-8">
             <input class="btn btn-secondary" type="submit" asp-page-handler="Cancel" value="CANCEL" />
             <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="REGISTER" />
         </div>
@@ -57,7 +63,7 @@
                 @Model.StatusMessage
             </p>
         </div>
-        <div class="col col-md-12 animate-fade delay-8">
+        <div class="col col-md-12 animate-fade delay-9">
             <span>Already have an account? </span><a asp-page="/Login">Login here!</a>
         </div>
     </div>

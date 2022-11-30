@@ -38,6 +38,12 @@ namespace KingsConsulting.Pages
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Password length must be at least 6 characters.")]
         public string Password { get; set; } = string.Empty;
 
+        [BindProperty]
+        [Display(Name = "Confirm Password")]
+        [Required(ErrorMessage = "Please confirm your password")]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        public string ConfirmPassword { get; set; } = string.Empty;
+
         public string StatusMessage { get; set; } = string.Empty;
 
         public UserInfo NewUserInfo { get; set; }
@@ -63,6 +69,7 @@ namespace KingsConsulting.Pages
             LastName = string.Empty;
             Email = string.Empty;
             Password = string.Empty;
+            ConfirmPassword = string.Empty;
             PhoneNumber = string.Empty;
             StatusMessage = string.Empty;
 
@@ -107,27 +114,13 @@ namespace KingsConsulting.Pages
                         return Page();
                     }
 
-                    // get user info from dataset
-                    NewUserInfo = new UserInfo();
-                    NewUserInfo.UserId = Convert.ToInt32(dsUserRecord.Tables[0].Rows[0]["userId"]);
-                    NewUserInfo.Email = dsUserRecord.Tables[0].Rows[0]["email"].ToString();
-                    NewUserInfo.FirstName = dsUserRecord.Tables[0].Rows[0]["firstName"].ToString();
-                    NewUserInfo.LastName = dsUserRecord.Tables[0].Rows[0]["lastName"].ToString();
-                    NewUserInfo.PhoneNumber = dsUserRecord.Tables[0].Rows[0]["phoneNumber"].ToString();
-
-                    // set session variables
-                    HttpContext.Session.SetString("UserId", NewUserInfo.UserId.ToString());
-                    HttpContext.Session.SetString("Email", NewUserInfo.Email!);
-                    HttpContext.Session.SetString("FirstName", NewUserInfo.FirstName!);
-                    HttpContext.Session.SetString("LastName", NewUserInfo.LastName!);
-                    HttpContext.Session.SetString("PhoneNumber", NewUserInfo.PhoneNumber!);
-
                     // clear form and model
                     FirstName = string.Empty;
                     LastName = string.Empty;
                     Email = string.Empty;
                     PhoneNumber = string.Empty;
                     Password = string.Empty;
+                    ConfirmPassword = string.Empty;
                     ModelState.Clear();
 
                     TempData[Constants.AlertSuccess] = "<strong>Account Creation Successful!</strong> Please login now!";

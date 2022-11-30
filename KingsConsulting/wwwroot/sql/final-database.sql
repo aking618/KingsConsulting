@@ -96,4 +96,74 @@ create table OrderContents
 go
 
 
--- NOTE: refreshDatabase.sql does the same thing as this file, but splits the table creation into stored procedures.
+-- Stored Procedures
+
+-- Create spCreateUser
+drop procedure if exists spCreateUser
+go
+
+create procedure spCreateUser
+    (
+    @firstName varchar(100),
+    @lastName varchar(100),
+    @phone varchar(100),
+    @email varchar(100),
+    @passcode varchar(100)
+)
+as
+begin
+    declare @randomText uniqueIdentifier = NewId()
+    declare @salt as char(100)
+    set @salt = hashbytes('SHA2_256', convert(char(100), @randomText))
+
+    declare @hashPass varbinary(max)
+    set @hashPass = hashbytes('SHA2_256', concat(@salt, @passcode))
+
+    insert into UserInfo
+        (firstName, lastName, email, phoneNumber, passcode, passwordSalt)
+    values
+        (
+            @firstName, @lastName, @email, @phone, @hashPass, @salt
+    )
+
+    select userId, firstName, lastName, phoneNumber, email
+    from UserInfo
+    where userId = SCOPE_IDENTITY()
+end
+go
+
+-- Create spValidateUser
+drop procedure if exists spValidateUser
+GO
+
+create procedure spValidateUser
+(
+    @email varchar(100),
+    @passcode varchar(100)
+)
+as
+begin
+    select userId, email, firstName, lastName, phoneNumber
+    from UserInfo
+    where email = @email
+    and passcode = hashbytes('SHA2_256', concat(passwordSalt, @passcode))
+end
+go
+
+-- Create spGetSpecificServiceByCategory
+drop procedure if exists spGetSpecificServiceByCategory
+go
+
+create procedure spGetSpecificServiceByCategory
+    (
+    @serviceCategoryID int
+)
+as
+begin
+    select c.ServiceCategoryName, t.serviceName, t.serviceDescription, t.servicePrice, t.serviceImage, t.serviceTypeID
+    from ServiceCategory c
+        join ServiceType t
+        on c.ServiceCategoryID = t.ServiceCategoryID
+    where c.ServiceCategoryID = @serviceCategoryID
+end
+go
