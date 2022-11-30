@@ -1,4 +1,6 @@
-﻿.animate-fade {
+﻿/* Animations */
+
+.animate-fade {
     animation: fade-in 1s ease-in backwards;
 }
 
@@ -22,6 +24,8 @@
     animation: fade-in 1s ease-in backwards, bounce 1s linear infinite;
     animation-delay: 1s, 2s;
 }
+
+/* Set of delays for elements */
 
 .delay-1 {
     animation-delay: 0.6s;
@@ -62,6 +66,8 @@
 .delay-10 {
     animation-delay: 1.5s;
 }
+
+/* Implementation of Animations */
 
 @keyframes fade-in {
     0% {

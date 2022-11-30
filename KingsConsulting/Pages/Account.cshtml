@@ -6,8 +6,12 @@
 <form method="post">
     <div class="row align-items-center">
         <div class="col gap-3">
+
+            @* Logic to check if user is logged in *@
+
             @if (Model.IsUserActive)
             {
+                @* Display user information *@
                 <div class="display-5 mb-5 animate-fade">My Account</div>
                 <div class="account-row gap-2 mb-2 animate-slide-left delay-1">
                     <h6 class=" min-width">Email:</h6>
@@ -29,6 +33,7 @@
             }
             else
             {
+                @* Button to return to login form *@
                 <div class="display-5 mb-5">No Active User Logged In</div>
                 <a asp-page="/Login">Please Login Here</a>
             }

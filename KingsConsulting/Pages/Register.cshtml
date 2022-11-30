@@ -5,6 +5,7 @@
 
 <form method="post">
     <div class="row row-cols-1 row-cols-md-2 g-3 align-items-center mt-5">
+        @* Header *@
         <div class="col col-md-12">
             <div class="display-5 animate-fade">
                 Welcome!
@@ -15,35 +16,42 @@
                 Register for a quicker and smoother experience!
             </p>
         </div>
+        @* First Name *@
         <div class="col col-md-12 animate-up delay-2">
             <label for="inputfName" asp-for="FirstName" class=" col-form-label">First name</label>
             <input type="text" id="inputfName" class="form-control" aria-describedby="fNameHelpInLine" asp-for="FirstName">
             <span class="form-text" asp-validation-for="FirstName"></span>
         </div>
+        @* Last Name *@
         <div class="col col-md-12 animate-up delay-3">
             <label for="inputlName" asp-for="LastName" class=" col-form-label">Last name</label>
             <input type="text" id="inputlName" class="form-control" aria-describedby="fNameHelpInLine" asp-for="LastName">
             <span class="form-text" asp-validation-for="LastName"></span>
         </div>
+        @* Phone *@
         <div class="col col-md-12 animate-up delay-4">
             <label for="inputPhone" asp-for="PhoneNumber" class=" col-form-label">Your phone number</label>
             <input type="tel" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline" asp-for="PhoneNumber">
             <span class="form-text" asp-validation-for="PhoneNumber"></span>
         </div>
+        @* Email *@
         <div class="col col-md-12 animate-up delay-5">
             <label for="inputEmail" asp-for="Email" class=" col-form-label">Your email</label>
             <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline" asp-for="Email">
             <span class="form-text" asp-validation-for="Email"></span>
         </div>
+        @* Password *@
         <div class="col col-md-12 animate-up delay-6">
             <label for="inputPassword" asp-for="Password" class="col-form-label">Your password</label>
             <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline" asp-for="Password">
             <span id="passwordHelpInline" class="form-text" asp-validation-for="Password"> </span>
         </div>
+        @* Buttons *@
         <div class="col col-md-12 animate-up delay-7">
             <input class="btn btn-secondary" type="submit" asp-page-handler="Cancel" value="CANCEL" />
             <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="REGISTER" />
         </div>
+        @* Message *@
         <div class="col col-md-12">
             <p class="lead">
                 @Model.StatusMessage

@@ -4,11 +4,13 @@
 }
 
 <div class="row row-cols-1 row-cols-md-2 align-items-center mt-5 smooth-resize">
+    @* Header *@
     <div class="col col-md-12 mb-5">
         <div class="display-5 animate-fade">
             @Model.serviceDetails.Title
         </div>
     </div>
+    @* Carousel *@
     <div class="col animate-slide-left">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -35,6 +37,7 @@
             </button>
         </div>
     </div>
+    @* Content *@
     <div class="col p-3 animate-slide-right">
         <div class="card">
                 <div class="card-header">

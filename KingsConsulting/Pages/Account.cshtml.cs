@@ -17,6 +17,9 @@ namespace KingsConsulting.Pages
 
         public string PhoneNumber { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Formats the phone number to a standard format.
+        /// </summary>
         public string FormatPhoneNumber(string phone)
         {
             Regex regex = new Regex(@"[^\d]");
@@ -28,23 +31,25 @@ namespace KingsConsulting.Pages
 
         public void OnGet()
         {
+            // Retrieve the user's information from session.
             Email = HttpContext.Session.GetString("Email");
             FirstName = HttpContext.Session.GetString("FirstName");
             LastName = HttpContext.Session.GetString("LastName");
             PhoneNumber = HttpContext.Session.GetString("PhoneNumber");
 
+            // Determine if the user is active.
             if (Email != null && Email != "")
             {
                 IsUserActive = true;
             }
-
-            System.Diagnostics.Debug.WriteLine("Yoooo");
         }
 
         public IActionResult OnPostSubmit()
         {
+            // Clear the user's session.
             HttpContext.Session.Clear();
 
+            // Setup a message to display to the user.
             TempData[Constants.AlertSuccess] = Email == string.Empty ? null : "Logout Successful!";
 
             return Redirect("/Login");

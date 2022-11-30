@@ -53,6 +53,9 @@ namespace KingsConsulting.Pages
         {
         }
 
+        /// <summary>
+        /// Clears the form and model.
+        /// </summary>
         public IActionResult OnPostCancel()
         {
             ModelState.Clear();
@@ -68,18 +71,22 @@ namespace KingsConsulting.Pages
 
         public IActionResult OnPostSubmit()
         {
+            // check if model state is valid
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            // establish connection to database
             var strConn = configuration.GetConnectionString("DefaultConnection");
 
             using (SqlConnection sqlConn = new(strConn))
             {
+                // select stored procedure
                 SqlDataAdapter sqlDataValidator = new SqlDataAdapter("spCreateUser", sqlConn);
                 sqlDataValidator.SelectCommand.CommandType = CommandType.StoredProcedure;
 
+                // add parameters
                 sqlDataValidator.SelectCommand.Parameters.AddWithValue("@firstName", FirstName);
                 sqlDataValidator.SelectCommand.Parameters.AddWithValue("@lastName", LastName);
                 sqlDataValidator.SelectCommand.Parameters.AddWithValue("@email", Email);
@@ -90,14 +97,17 @@ namespace KingsConsulting.Pages
                 {
                     DataSet dsUserRecord = new DataSet();
 
+                    // open connection and fill dataset
                     sqlDataValidator.Fill(dsUserRecord);
 
+                    // check if dataset is empty
                     if (dsUserRecord.Tables[0].Rows.Count == 0)
                     {
                         StatusMessage = "Invalid registration, please try again";
                         return Page();
                     }
 
+                    // get user info from dataset
                     NewUserInfo = new UserInfo();
                     NewUserInfo.UserId = Convert.ToInt32(dsUserRecord.Tables[0].Rows[0]["userId"]);
                     NewUserInfo.Email = dsUserRecord.Tables[0].Rows[0]["email"].ToString();
@@ -105,13 +115,14 @@ namespace KingsConsulting.Pages
                     NewUserInfo.LastName = dsUserRecord.Tables[0].Rows[0]["lastName"].ToString();
                     NewUserInfo.PhoneNumber = dsUserRecord.Tables[0].Rows[0]["phoneNumber"].ToString();
 
+                    // set session variables
                     HttpContext.Session.SetString("UserId", NewUserInfo.UserId.ToString());
                     HttpContext.Session.SetString("Email", NewUserInfo.Email!);
                     HttpContext.Session.SetString("FirstName", NewUserInfo.FirstName!);
                     HttpContext.Session.SetString("LastName", NewUserInfo.LastName!);
                     HttpContext.Session.SetString("PhoneNumber", NewUserInfo.PhoneNumber!);
 
-
+                    // clear form and model
                     FirstName = string.Empty;
                     LastName = string.Empty;
                     Email = string.Empty;

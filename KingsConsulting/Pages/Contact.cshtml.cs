@@ -40,6 +40,9 @@ namespace KingsConsulting.Pages
         {
         }
 
+        /// <summary>
+        /// Clears the form and model.
+        /// </summary>
         public IActionResult OnPostCancel()
         {
             ModelState.Clear();
@@ -54,6 +57,7 @@ namespace KingsConsulting.Pages
 
         public IActionResult OnPostSubmit()
         {
+            // Validate the model.
             if (ModelState.IsValid)
             {
                 return Page();

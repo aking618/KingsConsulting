@@ -34,9 +34,12 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Contact">Contact</a>
                         </li>
+
+                        @* Nav Icon to represent the current login state *@
                         <li class="flex-grow-1"></li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Account">
+                                @* If the user is logged in, show the otter icon *@
                                 @if (Context.Session.GetString("Email") == null || Context.Session.GetString("Email") == "")
                                 {
                                     <span class="fa-solid fa-user fa-lg"></span>
@@ -56,6 +59,9 @@
     </header>
     <div class="container text-light">
         <main role="main" class="pb-3">
+
+            @* Logic to display a dismissable alert *@
+
             @if (TempData[KingsConsulting.Model.Constants.AlertSuccess] != null)
             {
                 <div class="alert alert-success alert-dismissible fade show" role="alert">

@@ -5,21 +5,25 @@
 
 <form method="post">
     <div class="row row-cols-1 row-cols-md-2 g-3 mt-5 align-items-center">
+        @* Header *@
         <div class="col col-md-12">
             <div class="display-5 animate-fade">
                 Questions? Get in touch
             </div>
         </div>
+        @* Name *@
         <div class="col col-md-6 animate-up delay-1">
             <label for="inputName" asp-for="Name" class=" col-form-label">Your name</label>
             <input type="text" id="inputName" class="form-control" aria-describedby="nameHelpInLine" asp-for="Name">
             <span class="form-text" asp-validation-for="Name"></span>
         </div>
+        @* Email *@
         <div class="col col-md-6 animate-up delay-2">
             <label for="inputEmail" asp-for="Email" class=" col-form-label">Your email</label>
             <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline" asp-for="Email">
             <span class="form-text" asp-validation-for="Email"></span>
         </div>
+        @* Category *@
         <div class="col col-md-6 animate-up delay-3">
             <label for="selectCategory" asp-for="CategoryOption" class="col-form-label">What you are interested in</label>
             <select class="form-select" id="selectCategory" aria-label="Service selection" asp-for="CategoryOption">
@@ -28,6 +32,7 @@
                 <option value="3">Mobile Development</option>
             </select>
         </div>
+        @* Budget *@
         <div class="col col-md-6 animate-up delay-4">
             <label for="selectBudget" asp-for="BudgetOption" class="col-form-label">Project budget</label>
             <select class="form-select" id="selectBudget" aria-label="Budget selection" asp-for="BudgetOption">
@@ -38,11 +43,13 @@
                 <option value="3">Other</option>
             </select>
         </div>
+        @* Message *@
         <div class="col col-md-12 animate-up delay-5">
             <label for="inputMessage" asp-for="Message" class=" col-form-label">Message</label>
             <textarea id="inputMessage" rows="3" class="form-control" aria-describedby="messageHelpInline" asp-for="Message"></textarea>
             <span class="form-text" asp-validation-for="Message"></span>
         </div>
+        @* Submit *@
         <div class="col animate-up delay-6">
             <input class="btn btn-secondary" type="submit" asp-page-handler="Cancel" value="CANCEL" />
             <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="SEND" />

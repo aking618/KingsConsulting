@@ -6,8 +6,10 @@
 
 
 <div class="row row-cols-1 mt-5">
+    @* Header *@
     <h1 class="col text-center p-3 display-1 animate-fade">@Html.Raw(@Model.Message)<strong>King's Consulting</strong></h1>
     <h2 class="col text-center lead mb-5 animate-up delay-1">Realizing and Reimagining Digital Media</h2>
+    @* Main content *@
     <p class="col text-center animate-up delay-2 mb-2">
         If you're an entrepreneur, business owner, or creative professional, we can help you realize your vision and bring your ideas to life. We specialize in web design, web development, and digital marketing.
         The digital world is constantly evolving, and we're here to help you keep up with the latest trends and technologies.
@@ -16,6 +18,7 @@
         <br />
         Here are some options to get started:
     </p>
+    @* Arrows *@
     <div class="row mb-3">
         <div class="col text-center animate-bounce delay-5">
             <span>
@@ -33,6 +36,7 @@
             </span>
         </div>
     </div>
+    @* Buttons *@
     <div class="row gap-2">
         <div class="col text-center animate-slide-left delay-3">
             <a asp-page="./About"><button class="btn btn-primary animate-fade delay-1">LEARN MORE</button></a>

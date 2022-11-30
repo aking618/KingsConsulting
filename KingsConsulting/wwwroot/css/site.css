@@ -1,126 +1,46 @@
 :root * {
+
+    /* Define color palette */
+
     --primary-color-h: 168;
     --primary-color-s: 94%;
     --primary-color-l: 13%;
-    --primary-color: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        var(--primary-color-l)
-    );
-    --primary-color-10: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        calc(var(--primary-color-l) + 5%)
-    );
-    --primary-color-20: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        calc(var(--primary-color-l) + 10%)
-    );
-    --primary-color-30: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        calc(var(--primary-color-l) + 15%)
-    );
-    --primary-color-40: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        calc(var(--primary-color-l) + 20%)
-    );
-    --primary-color-50: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        calc(var(--primary-color-l) + 25%)
-    );
-    --primary-color-60: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        calc(var(--primary-color-l) + 30%)
-    );
-    --primary-color-70: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        calc(var(--primary-color-l) + 35%)
-    );
-    --primary-color-80: hsl(
-        var(--primary-color-h),
-        var(--primary-color-s),
-        calc(var(--primary-color-l) + 40%)
-    );
+    --primary-color: hsl( var(--primary-color-h), var(--primary-color-s), var(--primary-color-l));
+    --primary-color-10: hsl( var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + 5%));
+    --primary-color-20: hsl( var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + 10%));
+    --primary-color-30: hsl( var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + 15%));
+    --primary-color-40: hsl( var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + 20%));
+    --primary-color-50: hsl( var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + 25%));
+    --primary-color-60: hsl( var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + 30%));
+    --primary-color-70: hsl( var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + 35%));
+    --primary-color-80: hsl( var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + 40%));
     --secondary-color-h: 35;
     --secondary-color-s: 93%;
     --secondary-color-l: 53%;
-    --secondary-color: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        var(--secondary-color-l)
-    );
-    --secondary-color-10: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        calc(var(--secondary-color-l) + 5%)
-    );
-    --secondary-color-20: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        calc(var(--secondary-color-l) + 10%)
-    );
-    --secondary-color-30: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        calc(var(--secondary-color-l) + 15%)
-    );
-    --secondary-color-40: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        calc(var(--secondary-color-l) + 20%)
-    );
-    --secondary-color-50: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        calc(var(--secondary-color-l) + 25%)
-    );
-    --secondary-color-60: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        calc(var(--secondary-color-l) + 30%)
-    );
-    --secondary-color-70: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        calc(var(--secondary-color-l) + 35%)
-    );
-    --secondary-color-80: hsl(
-        var(--secondary-color-h),
-        var(--secondary-color-s),
-        calc(var(--secondary-color-l) + 40%)
-    );
+    --secondary-color: hsl( var(--secondary-color-h), var(--secondary-color-s), var(--secondary-color-l));
+    --secondary-color-10: hsl( var(--secondary-color-h), var(--secondary-color-s), calc(var(--secondary-color-l) + 5%));
+    --secondary-color-20: hsl( var(--secondary-color-h), var(--secondary-color-s), calc(var(--secondary-color-l) + 10%));
+    --secondary-color-30: hsl( var(--secondary-color-h), var(--secondary-color-s), calc(var(--secondary-color-l) + 15%));
+    --secondary-color-40: hsl( var(--secondary-color-h), var(--secondary-color-s), calc(var(--secondary-color-l) + 20%));
+    --secondary-color-50: hsl( var(--secondary-color-h), var(--secondary-color-s), calc(var(--secondary-color-l) + 25%));
+    --secondary-color-60: hsl( var(--secondary-color-h), var(--secondary-color-s), calc(var(--secondary-color-l) + 30%));
+    --secondary-color-70: hsl( var(--secondary-color-h), var(--secondary-color-s), calc(var(--secondary-color-l) + 35%));
+    --secondary-color-80: hsl( var(--secondary-color-h), var(--secondary-color-s), calc(var(--secondary-color-l) + 40%));
     --success-color-h: 145;
     --success-color-s: 63%;
     --success-color-l: 42%;
-    --success-color: hsl(
-        var(--success-color-h),
-        var(--success-color-s),
-        var(--success-color-l)
-    );
+    --success-color: hsl( var(--success-color-h), var(--success-color-s), var(--success-color-l));
     --warning-color-h: 45;
     --warning-color-s: 74%;
     --warning-color-l: 56%;
-    --warning-color: hsl(
-        var(--warning-color-h),
-        var(--warning-color-s),
-        var(--warning-color-l)
-    );
+    --warning-color: hsl( var(--warning-color-h), var(--warning-color-s), var(--warning-color-l));
     --error-color-h: 0;
     --error-color-s: 93%;
     --error-color-l: 62%;
-    --error-color: hsl(
-        var(--error-color-h),
-        var(--error-color-s),
-        var(--error-color-l)
-    );
+    --error-color: hsl( var(--error-color-h), var(--error-color-s), var(--error-color-l));
 }
 
+/* Set custom fonts */
 @supports (font-variation-settings: normal) {
     :root {
         font-family: "DM Sans", sans-serif;
@@ -152,6 +72,7 @@ body {
     animation: gradient 15s ease-in-out infinite;
 }
 
+/* Background anination */
 @keyframes gradient {
     0% {
         background-position: 0% 25%;
