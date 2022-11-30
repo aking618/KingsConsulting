@@ -3,58 +3,57 @@
 @{
 }
 
-    <form method="post">
-        <div class="row row-cols-1 row-cols-md-2 g-3 mt-5 align-items-center">
-            <div class="col col-md-12">
-                <div class="display-5 animate-fade">
-                    Questions? Get in touch
-                </div>
-            </div>
-            <div class="col col-md-6 animate-up delay-1">
-                <label for="inputName" class="col-form-label">Your name</label>
-                <input type="text" id="inputName" class="form-control" aria-describedby="nameHelpInline">
-                <span id="nameHelpInline" class="form-text">
-                    Must be 8-20 characters long.
-                </span>
-            </div>
-            <div class="col col-md-6 animate-up delay-2">
-                <label for="inputEmail" class="col-form-label">Your email</label>
-                <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
-                <span id="nameHelpInline" class="form-text">
-                    Must be 8-20 characters long.
-                </span>
-            </div>
-            <div class="col col-md-6 animate-up delay-3">
-                <label for="selectCategory" class="col-form-label">What you are interested in</label>
-                <select class="form-select" id="selectCategory" aria-label="Service selection">
-                    <option selected value="1">General Consulting</option>
-                    <option value="2">Web Development</option>
-                    <option value="3">Mobile Development</option>
-                </select>
-            </div>
-            <div class="col col-md-6 animate-up delay-4">
-                <label for="selectBudget" class="col-form-label">Project budget</label>
-                <select class="form-select" id="selectBudget" aria-label="Budget selection">
-                    <option selected value="1">Less than $50</option>
-                    <option value="2">$50 - $100</option>
-                    <option value="3">$100 - $500</option>
-                    <option value="3">$500 - $1000</option>
-                    <option value="3">Other</option>
-                </select>
-            </div>
-            <div class="col col-md-12 animate-up delay-5">
-                <label for="inputMessage" class="col-form-label">Message</label>
-                <textarea id="inputMessage" rows="3" class="form-control" aria-describedby="messageHelpInline"></textarea>
-            </div>
-            <div class="col animate-up delay-6">
-                <button class="btn btn-primary">SEND</button>
+<form method="post">
+    <div class="row row-cols-1 row-cols-md-2 g-3 mt-5 align-items-center">
+        <div class="col col-md-12">
+            <div class="display-5 animate-fade">
+                Questions? Get in touch
             </div>
         </div>
-    </form>
+        <div class="col col-md-6 animate-up delay-1">
+            <label for="inputName" asp-for="Name" class=" col-form-label">Your name</label>
+            <input type="text" id="inputName" class="form-control" aria-describedby="nameHelpInLine" asp-for="Name">
+            <span class="form-text" asp-validation-for="Name"></span>
+        </div>
+        <div class="col col-md-6 animate-up delay-2">
+            <label for="inputEmail" asp-for="Email" class=" col-form-label">Your email</label>
+            <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline" asp-for="Email">
+            <span class="form-text" asp-validation-for="Email"></span>
+        </div>
+        <div class="col col-md-6 animate-up delay-3">
+            <label for="selectCategory" asp-for="CategoryOption" class="col-form-label">What you are interested in</label>
+            <select class="form-select" id="selectCategory" aria-label="Service selection" asp-for="CategoryOption">
+                <option selected value="1">General Consulting</option>
+                <option value="2">Web Development</option>
+                <option value="3">Mobile Development</option>
+            </select>
+        </div>
+        <div class="col col-md-6 animate-up delay-4">
+            <label for="selectBudget" asp-for="BudgetOption" class="col-form-label">Project budget</label>
+            <select class="form-select" id="selectBudget" aria-label="Budget selection" asp-for="BudgetOption">
+                <option selected value="1">Less than $50</option>
+                <option value="2">$50 - $100</option>
+                <option value="3">$100 - $500</option>
+                <option value="3">$500 - $1000</option>
+                <option value="3">Other</option>
+            </select>
+        </div>
+        <div class="col col-md-12 animate-up delay-5">
+            <label for="inputMessage" asp-for="Message" class=" col-form-label">Message</label>
+            <textarea id="inputMessage" rows="3" class="form-control" aria-describedby="messageHelpInline" asp-for="Message"></textarea>
+            <span class="form-text" asp-validation-for="Message"></span>
+        </div>
+        <div class="col animate-up delay-6">
+            <input class="btn btn-secondary" type="submit" asp-page-handler="Cancel" value="CANCEL" />
+            <input class="btn btn-primary" type="submit" asp-page-handler="Submit" value="SEND" />
+        </div>
+    </div>
+</form>
 
-@{/* TODO: Add client side validation to this form
-           Update the model to contain all of the fields.
-           Add a cancel button
-           Do show something to show that message was successful
-    */}
-
+@* Add section scripts for client-side validation so that invalid data does not get sent to the server *@
+@section Scripts {
+    @{
+        @* This references Javascript files needed for validation. Located in the shared folder*@
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
