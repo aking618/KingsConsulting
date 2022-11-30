@@ -270,11 +270,6 @@ h2,
 .lead {
     font-family: "DM Serif Display", serif;
 }
-
-.service-box {
-    min-height: 300px;
-}
-
 .line-zero {
     line-height: 0;
 }
